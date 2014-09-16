@@ -5,6 +5,7 @@ Created on Sep 15, 2014
 '''
 
 import Tkinter as tk
+import ttk
 
 def splash():
     root = tk.Tk()
@@ -19,9 +20,16 @@ def splash():
     #assert os.path.exists(image_file)
     # use Tkinter's PhotoImage for .gif files
     image = tk.PhotoImage(file=image_file)
-    canvas = tk.Canvas(root, height=height*0.8, width=width*0.8, bg="brown")
-    canvas.create_image(width*0.8/2, height*0.8/2, image=image)
+    canvas = tk.Canvas(root, height=height*0.75, width=width*0.75, bg="black")
+    canvas.create_image(width*0.75/2, height*0.75/2, image=image)
     canvas.pack()
+    
+    progress = ttk.Progressbar(root, orient="horizontal", length=width*0.3, mode="determinate")
+    progress.pack(expand=True, side=tk.TOP)
     # show the splash screen for 5000 milliseconds then destroy
+    progress.start(42)
+    
     root.after(5000, root.destroy)
+    
     root.mainloop()
+splash()

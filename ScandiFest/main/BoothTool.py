@@ -20,7 +20,7 @@ class GUI(Frame):
         self.parent.title("BoothTool")
         self.pack(fill=BOTH, expand=1)
         style = Style()
-        style.configure("TFrame", background="#333")
+        style.configure("TFrame", foreground="black", background="white")
 
     def centerWindow(self):
         windowWidth = self.parent.winfo_screenwidth()
