@@ -21,7 +21,7 @@ class GUI(Frame):
         self.pack(fill=BOTH, expand=1)
         style = Style()
         style.configure("TFrame", foreground="black", background="white")
-
+    
     def centerWindow(self):
         windowWidth = self.parent.winfo_screenwidth()
         windowHeight = self.parent.winfo_screenheight()

@@ -32,4 +32,3 @@ def splash():
     root.after(5000, root.destroy)
     
     root.mainloop()
-splash()
