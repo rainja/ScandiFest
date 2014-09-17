@@ -5,7 +5,7 @@ Updated on Sep 16, 2014
 @author: Paul Reesman
 '''
 
-from Tkinter import Tk, Label, BOTH
+from Tkinter import Tk, Label, BOTH, TOP
 from ttk import Frame, Style
 from main import Logic, Splash
 
@@ -20,8 +20,14 @@ class GUI(Frame):
     def initUI(self):
         self.parent.title("BoothTool")
         self.pack(fill=BOTH, expand=1)
-        style = Style()
-        style.configure("TFrame", foreground="black", background="white")
+        self.style = Style()
+        self.style.configure("TFrame", foreground="black", background="white")
+        
+        self.labelList = []
+        for index in xrange(0, len(database.pieNames)):
+            self.labelList.append(Label(self.parent, text=str(database.pieNames[index])))
+            self.labelList[index].pack(expand=True, side=TOP, fill=BOTH)
+        
     
     def centerWindow(self):
         windowWidth = self.parent.winfo_screenwidth()
@@ -34,11 +40,22 @@ class GUI(Frame):
         
         self.parent.geometry("%dx%d+%d+%d" % (width, height, x, y))
 
+
+
 def main():
     Splash.splash()
     root = Tk()
     gui = GUI(root)
+    root.protocol("WM_DELETE_WINDOW", close(root))
     root.mainloop()
+
+def close(root):
+    database.close()
+    root.destroy
+
+
+
+database = Logic.Logic("/SQLite/BoothTool.db")
 
 if __name__ == '__main__':
     main()
