@@ -1,12 +1,12 @@
 '''
 Created on Sep 15, 2014
-Updated on Sep 16, 2014
+Updated on Sep 17, 2014
 
 @author: Paul Reesman
 '''
 
 from Tkinter import Tk, Label, BOTH, TOP
-from ttk import Frame, Style
+from ttk import Frame, Style, Notebook
 from main import Logic, Splash
 
 class GUI(Frame):
@@ -15,6 +15,7 @@ class GUI(Frame):
         self.parent = parent
         
         self.initUI()
+        self.notebook()
         self.centerWindow()
     
     def initUI(self):
@@ -26,7 +27,7 @@ class GUI(Frame):
         self.labelList = []
         for index in xrange(0, len(database.pieNames)):
             self.labelList.append(Label(self.parent, text=str(database.pieNames[index])))
-            self.labelList[index].pack(expand=True, side=TOP, fill=BOTH)
+            #self.labelList[index].pack(expand=True, side=TOP, fill=BOTH)
         
     
     def centerWindow(self):
@@ -39,13 +40,16 @@ class GUI(Frame):
         y = (windowHeight - height) / 2
         
         self.parent.geometry("%dx%d+%d+%d" % (width, height, x, y))
+    
+    def notebook(self):
+        tabFrame = Notebook(self.parent)
 
 
 
 def main():
     Splash.splash()
     root = Tk()
-    gui = GUI(root)
+    GUI(root)
     root.protocol("WM_DELETE_WINDOW", close(root))
     root.mainloop()
 

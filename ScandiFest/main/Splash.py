@@ -1,6 +1,6 @@
 '''
 Created on Sep 15, 2014
-Updated on Sep 16, 2014
+Updated on Sep 17, 2014
 
 @author: Paul Reesman
 '''
@@ -28,7 +28,7 @@ def splash():
     progress = ttk.Progressbar(root, orient="horizontal", length=width*0.3, mode="determinate")
     progress.pack(expand=True, side=tk.TOP)
     # show the splash screen for 5000 milliseconds then destroy
-    progress.start(42)
+    progress.start(40)
     
     root.after(5000, root.destroy)
     
