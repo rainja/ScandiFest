@@ -7,16 +7,16 @@ Updated on Sep 18, 2014
 
 from Tkinter import *
 from ttk import Style, Notebook
-from main import Logic, Splash
+#from main import Logic, Splash
+from Logic import Logic
+from Splash import *
 
-database = Logic.Logic("/SQLite/BoothTool.db")
-Splash.splash()
-root = Tk()
+database = Logic("/SQLite/BoothTool.db")
 
 class GUI(Frame):
-    def __init__(self, parent):
-        Frame.__init__(self, parent)
-        self.parent = parent
+    def __init__(self, root):
+        Frame.__init__(self, root)
+        self.root = root
         
         #self.notebook() <-- Should be it's own class, probably
         
@@ -24,34 +24,35 @@ class GUI(Frame):
         self.centerWindow()
     
     def initUI(self):
-        self.parent.title("BoothTool")
+        self.root.title("BoothTool")
         self.pack(fill=BOTH, expand=1)
         self.style = Style()
         self.style.configure("TFrame", foreground="black", background="white")
         
-        self.parent.config(menu=Menubar(self.parent))
+        self.root.config(menu=Menubar(self.root))
         #self.filebar.pack(side=TOP, expand=True, fill=X)
         #self.filebar.grid()
         
         self.labelList = []
         for index in xrange(0, len(database.pieNames)):
-            self.labelList.append(Label(self.parent, text=str(database.pieNames[index])))
+            self.labelList.append(Label(self.root, text=str(database.pieNames[index])))
             self.labelList[index].pack(expand=True, side=TOP, fill=BOTH)
         
     
     def centerWindow(self):
-        windowWidth = self.parent.winfo_screenwidth()
-        windowHeight = self.parent.winfo_screenheight()
+        windowWidth = self.root.winfo_screenwidth()
+        windowHeight = self.root.winfo_screenheight()
         
         width = .75 * windowWidth
         height = .75 * windowHeight
         x = (windowWidth - width) / 2
         y = (windowHeight - height) / 2
         
-        self.parent.geometry("%dx%d+%d+%d" % (width, height, x, y))
+        self.root.geometry("%dx%d+%d+%d" % (width, height, x, y))
     
     def notebook(self):
-        tabFrame = Notebook(self.parent)
+        tabFrame = Notebook(self.root)
+        
 
 
 
@@ -63,7 +64,7 @@ class Menubar(Menu):
         self.filemenu.add_command(label="Logout")
         self.filemenu.add_command(label="print")
         self.filemenu.add_separator()
-        self.filemenu.add_command(label="exit", command=close)
+        self.filemenu.add_command(label="exit", command=root.destroy)
         
         self.add_cascade(label="File", menu=self.filemenu)
         
@@ -81,17 +82,20 @@ class Menubar(Menu):
         #Button(self, text="File").pack(side=LEFT)
         #Button(self, text="Admin").pack(side=LEFT)
         #Button(self, text="Help").pack(side=LEFT)
+        
 
 
 def main():
+    splash()
+    root = Tk()
     GUI(root)
-    root.protocol("WM_DELETE_WINDOW", close())
+    root.protocol("WM_DELETE_WINDOW", close(root))
     root.mainloop()
 
-def close():
+
+def close(root):
     database.close()
     root.destroy
-
 
 
 
