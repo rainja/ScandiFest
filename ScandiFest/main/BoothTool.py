@@ -1,6 +1,6 @@
 '''
 Created on Sep 15, 2014
-Updated on Sep 18, 2014
+Updated on Sep 22, 2014
 
 @author: Paul Reesman
 '''
@@ -20,23 +20,20 @@ class GUI(Frame):
         
         #self.notebook() <-- Should be it's own class, probably
         
-        self.initUI()
         self.centerWindow()
+        self.initUI()
+        
     
     def initUI(self):
         self.root.title("BoothTool")
-        self.pack(fill=BOTH, expand=1)
-        self.style = Style()
-        self.style.configure("TFrame", foreground="black", background="white")
-        
         self.root.config(menu=Menubar(self.root))
-        #self.filebar.pack(side=TOP, expand=True, fill=X)
-        #self.filebar.grid()
         
-        self.labelList = []
-        for index in xrange(0, len(database.pieNames)):
-            self.labelList.append(Label(self.root, text=str(database.pieNames[index])))
-            self.labelList[index].pack(expand=True, side=TOP, fill=BOTH)
+        titlePage(self.root).pack(expand=True, fill=BOTH, side=TOP)
+        
+        #self.labelList = []
+        #for index in xrange(0, len(database.pieNames)):
+            #self.labelList.append(Label(self.root, text=str(database.pieNames[index])))
+            #self.labelList[index].pack(expand=True, side=TOP, fill=BOTH)
         
     
     def centerWindow(self):
@@ -83,6 +80,16 @@ class Menubar(Menu):
         #Button(self, text="Admin").pack(side=LEFT)
         #Button(self, text="Help").pack(side=LEFT)
         
+
+
+class titlePage(Frame):
+    def __init__(self, root):
+        Frame.__init__(self, root)
+        
+        self.config(background="black")
+        Label(self, text="BoothTool.py\nVersion A.01", height=20, width=).pack(side=TOP)
+        Button(self, text="Login").pack(side=TOP)
+        Button(self, text="New User?").pack(side=TOP)
 
 
 def main():
