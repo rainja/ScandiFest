@@ -1,6 +1,6 @@
 '''
 Created on Sep 15, 2014
-Updated on Sep 23, 2014
+Updated on Sep 26, 2014
 
 @author: Paul Reesman
 '''
@@ -144,6 +144,7 @@ class welcomePage(Frame):
 class newUserPage(Frame):
     def __init__(self, root, gui):
         Frame.__init__(self, root)
+        self.gui = gui
         
         self.config(background="blue")
         Label(self, text="Create A New User", background="blue", height=20, width=root.winfo_width()).pack(side=TOP)

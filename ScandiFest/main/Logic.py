@@ -1,6 +1,6 @@
 '''
 Created on Sep 15, 2014
-updated on Sep 23, 2014
+updated on Sep 26, 2014
 
 @author: Paul Reesman
 '''
@@ -24,15 +24,15 @@ class Logic():
     
     def login(self, username, password):
         self.cursor.execute("SELECT EXISTS(SELECT * FROM users WHERE username=?)", (username,))
-        if self.cursor.fetchone():
+        if int(self.cursor.fetchone()[0]):
             self.cursor.execute("SELECT password FROM users WHERE username=?", (username,))
-            if password == self.cursor.fetchone():
+            if password == self.cursor.fetchone()[0]:
                 return True
         return False
     
     def newUser(self, username, password, fname, lname):
         self.cursor.execute("SELECT EXISTS(SELECT * FROM users WHERE username=?)", (username,))
-        if self.cursor.fetchone():
+        if int(self.cursor.fetchone()[0]):
             return False
         self.cursor.execute("INSERT INTO users(username, password, fname, lname) VALUES(?, ?, ?, ?)", (username, password, fname, lname))
         self.conn.commit()
