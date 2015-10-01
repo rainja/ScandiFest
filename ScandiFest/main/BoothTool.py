@@ -7,10 +7,11 @@ Updated on Sep 26, 2014
 
 from Tkinter import *
 from ttk import Notebook
-from Logic import Logic
+from Database_File import Database
 from Splash import splash
 
-database = Logic("/SQLite/BoothTool.db")
+#database = Database("/SQLite/BoothTool.db")
+database = None
 
 class GUI(Frame):
     def __init__(self, root):

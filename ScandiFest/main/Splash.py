@@ -17,7 +17,7 @@ def splash():
     root.geometry('%dx%d+%d+%d' % (width*0.8, height*0.8, width*0.1, height*0.1))
     # take a .jpg picture you like, add text with a program like PhotoFiltre
     # (free from http://www.photofiltre.com) and save as a .gif image file
-    image_file = "Internetdownload.gif"
+    image_file = "./Internetdownload.gif"
     #assert os.path.exists(image_file)
     # use Tkinter's PhotoImage for .gif files
     image = tk.PhotoImage(file=image_file)

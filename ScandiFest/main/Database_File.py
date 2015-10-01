@@ -7,11 +7,15 @@ updated on Sep 26, 2014
 
 import sqlite3 as lite
 
-class Logic():
+class Database():
     pieNames = []
     
     def __init__(self, DB, IP='local host'):
-        self.conn = lite.connect(DB)
+        try:
+            self.conn = lite.connect(DB)
+        except:
+            print "Could not connect to the database!\nPlease enter a valid path!"
+            
         self.conn.execute('pragma foreign_keys = on')
         self.conn.commit()
         self.cursor = self.conn.cursor()
