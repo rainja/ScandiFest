@@ -8,7 +8,7 @@ updated on Sep 26, 2014
 import sqlite3 as lite
 
 class Database():
-    pieNames = []
+    foodItems = []
     
     def __init__(self, DB, IP='local host'):
         try:
