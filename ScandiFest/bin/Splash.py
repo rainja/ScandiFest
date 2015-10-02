@@ -10,7 +10,7 @@ import ttk
 import os
 
 def splash():
-    root = tk.Toplevel()
+    root = tk.Tk()
     # show no frame
     root.overrideredirect(True)
     width = root.winfo_screenwidth()
@@ -19,7 +19,7 @@ def splash():
     # take a .jpg picture you like, add text with a program like PhotoFiltre
     # (free from http://www.photofiltre.com) and save as a .gif image file
     image_file = "images/Internetdownload.gif"
-    #assert os.path.exists(image_file)
+    assert os.path.exists(image_file)
     # use Tkinter's PhotoImage for .gif files
     image = tk.PhotoImage(file=image_file)
     canvas = tk.Canvas(root, height=height*0.75, width=width*0.75, bg="black")
