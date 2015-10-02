@@ -12,7 +12,7 @@ from pages.gui import GUI
 
 
 class boothTool():
-    def __init__():
+    def __init__(self):
         self.database = Database("../db/BoothTool.db")
         #database = None
 
