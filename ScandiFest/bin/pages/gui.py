@@ -5,7 +5,7 @@ Created on Wed Sep 30 20:41:53 2015
 @author: Paul
 """
 
-from Tkinter import *
+from Tkinter import Frame, BOTH, TOP
 from ttk import Notebook
 from menubar import Menubar
 from title import titlePage
@@ -29,6 +29,7 @@ class GUI(Frame):
         
         self.widget = titlePage(self.root, self)
         self.widget.pack(expand=True, fill=BOTH, side=TOP)
+        #root.configure(image=PhotoImage(file="images/rosemaling.gif"))
         #self.labelList = []
         #for index in xrange(0, len(database.pieNames)):
             #self.labelList.append(Label(self.root, text=str(database.pieNames[index])))

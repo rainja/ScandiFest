@@ -5,7 +5,7 @@ Updated on Sep 26, 2014
 @author: Paul Reesman
 '''
 
-from Tkinter import *
+from Tkinter import Tk
 from Database_File import Database
 from Splash import splash
 from pages.gui import GUI
@@ -18,7 +18,7 @@ class boothTool():
 
 
 def main():
-    splash()
+    #splash()
     root = Tk()
     GUI(root, boothTool())
     root.protocol("WM_DELETE_WINDOW", root.destroy)

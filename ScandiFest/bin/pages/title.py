@@ -5,7 +5,7 @@ Created on Wed Sep 30 20:34:51 2015
 @author: Paul
 """
 
-from Tkinter import *
+from Tkinter import Frame, Label, Button, TOP
 from login import loginPage
 from newUser import newUserPage
 

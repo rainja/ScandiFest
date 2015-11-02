@@ -5,7 +5,7 @@ Created on Wed Sep 30 20:36:20 2015
 @author: Paul
 """
 
-from Tkinter import *
+from Tkinter import Menu
 
 class Menubar(Menu):
     def __init__(self, root, gui):
