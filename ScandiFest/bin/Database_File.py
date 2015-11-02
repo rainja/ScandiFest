@@ -20,6 +20,7 @@ class Database():
         self.conn.commit()
         self.cursor = self.conn.cursor()
         
+        self.conn.execute("CREATE TABLE if not EXISTS users (username TEXT PRIMARY KEY, password TEXT, fname TEXT, lname TEXT)")
         #self.cursor.execute("SELECT name FROM Freezer")
         #pieNames = self.cursor.fetchall()
         #for member in self.cursor.execute("SELECT name FROM Freezer"):
