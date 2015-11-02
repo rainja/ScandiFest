@@ -33,6 +33,9 @@ class loginPage(Frame):
         text2.pack()
         
         Button(self, text="Login...", font=("Times", "20"), background="gainsboro", command=lambda: self.loginCommand(text1.get(), text2.get())).pack()
+        self.root.bind("<Return>", lambda event: self.loginCommand(text1.get(), text2.get()))
+        # make sure the frame has focus so the binding will work
+        self.root.focus_set()
     
     def loginCommand(self, username, password):
         if self.gui.btd.database.login(username, password):
