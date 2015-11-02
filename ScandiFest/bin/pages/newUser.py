@@ -5,8 +5,8 @@ Created on Wed Sep 30 20:38:36 2015
 @author: Paul
 """
 
-from Tkinter import Frame, Label, Entry, Button, Toplevel, BOTH, TOP
-from welcome import welcomePage
+from Tkinter import Frame, Label, Entry, Button, Toplevel, TOP
+import title
 
 
 class newUserPage(Frame):
@@ -33,7 +33,24 @@ class newUserPage(Frame):
     
     def createUser(self, username, password, fname, lname):
         if self.gui.btd.database.newUser(username, password, fname, lname):
-            self.gui.screenChange(welcomePage(self.root, self.gui))
+            popup = Toplevel()
+            popup.title("Account created!")
+            
+            windowWidth = popup.winfo_screenwidth()
+            windowHeight = popup.winfo_screenheight()
+            
+            width = .25 * windowWidth
+            height = .1 * windowHeight
+            x = (windowWidth - width) / 2
+            y = (windowHeight - height) / 2
+            
+            popup.geometry("%dx%d+%d+%d" % (width, height, x, y))
+            popup.update()
+            
+            Label(popup, text="Your new account has been successfully created!").pack()
+            Button(popup, text="Dismiss", command=popup.destroy).pack()
+            
+            self.gui.screenChange(title.titlePage(self.root, self.gui))
         else:
             popup = Toplevel()
             popup.title("Username Exists!")
