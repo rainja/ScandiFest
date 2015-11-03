@@ -48,7 +48,7 @@ class GUI(Frame):
         self.root.update()
     
     def screenChange(self, newScreen):
-        self.widget.pack_forget()
+        self.widget.pack_forget()   ### Change implementation to grid - update to version A.02
         self.widget = newScreen
         self.widget.pack(expand=True, fill=BOTH, side=TOP)
     
